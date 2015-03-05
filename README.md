@@ -1,7 +1,8 @@
 # Yii2 Translate Panel
 
 [Yii2](http://www.yiiframework.com) Translate Panel makes the translation of your application so simple.
-It based on [i18n (internalization) module](https://github.com/zelenin/yii2-i18n-module) with greatly improved usability in mind (see screen shots below).
+
+This module based on [i18n (internalization) module](https://github.com/zelenin/yii2-i18n-module) with greatly improved usability in mind (see screen shots below).
 
 TODO Yii2 Translate Panel screens...
 
@@ -122,22 +123,6 @@ Import translations from PHP files
 
 ```
 php yii i18n/import @yii/messages
-```
-
-Configure "Yii2 Translate Panel" component:
-
-```php
-'i18n' => [
-    'class'=> uran1980\yii\modules\i18n\components\i18n::className(),
-    'languages' => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
-    'translations' => [
-        'yii' => [
-            'class'           => yii\i18n\DbMessageSource::className(),
-            'enableCaching'   => true,
-            'cachingDuration' => 60 * 60 * 2, // cache on 2 hourse
-        ]
-    ]
-],
 ```
 
 
