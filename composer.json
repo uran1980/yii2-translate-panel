@@ -1,0 +1,42 @@
+{
+    "name": "uran1980/yii2-translate-panel",
+    "description": "Yii2 Translate Panel makes the translation of your application so simple",
+    "version": "0.1.5",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "i18n",
+        "translation",
+        "translations",
+        "translate-panel"
+    ],
+    "homepage": "https://github.com/uran1980/yii2-translate-panel",
+    "time": "2015-03-05",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Yakovlev",
+            "email": "uran1980@gmail.com",
+            "homepage": "https://github.com/uran1980",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/uran1980/yii2-translate-panel/issues",
+        "source": "https://github.com/uran1980/yii2-translate-panel"
+    },
+    "require": {
+        "yiisoft/yii2": "~2",
+        "zelenin/yii2-i18n-module": "0.1.5",
+        "rmrevin/yii2-fontawesome": "*",
+
+        "bower-asset/animate.css": "*",
+        "bower-asset/jquery-form": "*",
+        "bower-asset/scroll-to-top": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "uran1980\\yii\\modules\\i18n\\": ""
+        }
+    }
+}

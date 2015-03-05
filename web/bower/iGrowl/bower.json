@@ -1,0 +1,28 @@
+{
+  "name": "iGrowl",
+  "version": "3.0.0",
+  "homepage": "https://github.com/catc/iGrowl",
+  "authors": [
+    "catc <catalin.covic@gmail.com>"
+  ],
+  "description": "Growl-like notifications with an emphasis on icons.",
+  "main": ["dist/js/igrowl.js", "dist/css/igrowl.css"],
+  "keywords": [
+    "growl",
+    "notification",
+    "alert",
+    "icon",
+    "message",
+    "notice"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "*",
+    "!dist/**/*",
+    "!LICENSE"
+  ],
+  "dependencies": {
+    "animate.css": "~3.2.0",
+    "jquery": "~2.1.1"
+  }
+}
