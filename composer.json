@@ -38,8 +38,5 @@
         "psr-4": {
             "uran1980\\yii\\modules\\i18n\\": ""
         }
-    },
-    "extra": {
-        "bootstrap": "uran1980\\yii\\modules\\i18n\\Bootstrap"
     }
 }

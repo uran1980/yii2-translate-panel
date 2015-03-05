@@ -2,7 +2,7 @@
 
 namespace uran1980\yii\modules\i18n\assets;
 
-class AppIGrowlAsset extends AssetBundle
+class AppIGrowlAsset extends \yii\web\AssetBundle
 {
     public $sourcePath = '@uran1980/yii/modules/i18n/web';
     public $css = [

@@ -31,13 +31,18 @@ to the require section of your ```composer.json```
 
 ## Usage
 
-Configure "Yii2 Translate Panel" component in ```common/config/main.php```:
+Configure urlManager and "Yii2 Translate Panel" component in ```common/config/main.php```:
 
 ```php
 return [
     ...
     'components' => [
         ...
+        'urlManager' => [
+            'class'             => yii\web\UrlManager::className(),
+            'enablePrettyUrl'   => true,
+            'showScriptName'    => false, // false - means that index.php will not be part of the URLs
+        ],
         'i18n' => [
             'class'=> uran1980\yii\modules\i18n\components\I18N::className(),
             'languages' => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
