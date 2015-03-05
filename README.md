@@ -4,7 +4,7 @@
 
 This module based on [i18n (internalization) module](https://github.com/zelenin/yii2-i18n-module) with greatly improved usability in mind (see screen shots below).
 
-TODO Yii2 Translate Panel screens...
+![Yii2 Translate Panel screens](https://cloud.githubusercontent.com/assets/1616795/6514529/d91e4a1a-c38b-11e4-80d2-3642ccce04d0.png)
 
 
 ## Installation
