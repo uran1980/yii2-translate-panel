@@ -34,7 +34,7 @@ to the require section of your ```composer.json```
 Configure "Yii2 Translate Panel" component in ```common/config/main.php```:
 
 ```php
-$config = [
+return [
     ...
     'components' => [
         ...
@@ -58,7 +58,7 @@ $config = [
 Configure "Yii2 Translate Panel" module in ```backend/config/main.php```:
 
 ```php
-$config = [
+return [
     ...
     'modules' => [
         ...
