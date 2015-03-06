@@ -1,0 +1,60 @@
+.text-align-center {
+    text-align: center !important; }
+.font-weight-bold, .bold {
+    font-weight: bold !important; }
+.margin-bottom-10px {
+    margin-bottom: 10px !important; }
+.nowrap {
+    white-space: nowrap !important; }
+
+.translation-tabs .nav-tabs > li > a:hover {
+  background-color: #eaeaea; }
+.translation-tabs .nav-tabs > li.active > a,
+.translation-tabs .nav-tabs > li.active > a:hover,
+.translation-tabs .nav-tabs > li.active > a:focus {
+  background-color: transparent;
+  border-bottom-color: #f2f2f2; }
+
+tr.success .translation-tabs .nav-tabs > li.active > a,
+tr.success .translation-tabs .nav-tabs > li.active > a:hover,
+tr.success .translation-tabs .nav-tabs > li.active > a:focus {
+  border-bottom-color: #c3ffab; }
+tr.danger .translation-tabs .nav-tabs > li.active > a,
+tr.danger .translation-tabs .nav-tabs > li.active > a:hover,
+tr.danger .translation-tabs .nav-tabs > li.active > a:focus {
+  border-bottom-color: #ffdada; }
+
+.translation-textarea {
+  min-height: 100px;
+  max-height: 150px;
+  margin-top: 5px; }
+
+.source-message ul.trace {
+  border-top: 1px solid #dcdcdc; }
+
+.translations-index table > thead > tr > th,
+.translations-index table > thead > tr > td,
+.translations-index table > tbody > tr > th,
+.translations-index table > tbody > tr > td,
+.translations-index table > tfoot > tr > th,
+.translations-index table > tfoot > tr > td {
+  vertical-align: middle; }
+
+.spoiler-content {
+  display: none; }
+
+.chosen-container-single .chosen-single {
+  height: 33px;
+  padding: 4px 0 4px 8px; }
+  .chosen-container-single .chosen-single div {
+    top: 4px; }
+
+ul.trace {
+  font-size: 12px;
+  color: #999;
+  margin: 2px 0 0 0;
+  padding: 0;
+  list-style: none;
+  white-space: normal; }
+
+/*# sourceMappingURL=translate.css.map */
