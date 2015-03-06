@@ -79,12 +79,12 @@ return [
             'controllerMap' => [
                 'default' => uran1980\yii\modules\i18n\controllers\DefaultController::className(),
             ],
-            // example for set access to module (if required):
+            // example for set access control to module (if required):
             'as access' => [
                 'class' => yii\filters\AccessControl::className(),
                 'rules' => [
                     'controllers'   => ['i18n/default'],
-                    'actions'       => ['index', 'update', 'rescan', 'clear-cache'],
+                    'actions'       => ['index', 'update', 'rescan', 'clear-cache', 'delete', 'restore'],
                     'allow'         => true,
                     'roles'         => ['admin'],
                 ],
