@@ -7,7 +7,7 @@ use yii\bootstrap\Tabs;
 $items = [];
 foreach ( Yii::$app->i18n->languages as $lang ) {
     $message = Yii::t($model->category, $model->message, [], $lang);
-    $message = ($model->message == $message && $lang != Yii::$app->params['app.i18nModule']['languages'][0])
+    $message = ($model->message == $message && $lang != Yii::$app->i18n->languages[0])
              ? '' : $message;
     $items[] = [
         'label' => '<b>' . strtoupper($lang) . '</b>',
