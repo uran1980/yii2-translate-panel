@@ -27,7 +27,7 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         if ( ($referrer = Yii::$app->getRequest()->referrer) ) {
             return $this->redirect($referrer);
         } else {
-            return $this->redirect(['/backend/translations/index']);
+            return $this->redirect(['/translations']);
         }
     }
 
@@ -35,7 +35,7 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
     {
         // ---------------------- CHECK IS AJAX REQUEST ------------------------
         if ( !Yii::$app->getRequest()->isAjax ) {
-            return $this->redirect(['/backend/translations/index']);
+            return $this->redirect(['/translations']);
         }
 
         // ------------------ SET JSON FORMAT FOR RESPONSE ---------------------
@@ -61,7 +61,7 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
     {
         // ---------------------- CHECK IS AJAX REQUEST ------------------------
         if ( !Yii::$app->getRequest()->isAjax ) {
-            return $this->redirect(['/backend/translations/index']);
+            return $this->redirect(['/translations']);
         }
 
         // ------------------ SET JSON FORMAT FOR RESPONSE ---------------------

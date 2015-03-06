@@ -36,7 +36,7 @@ AppTranslateAsset::register($this);
                     $params = ArrayHelper::merge(Yii::$app->request->getQueryParams(), [
                         $searchModel->formName() => ['status' => $status],
                     ]);
-                    $route = ArrayHelper::merge(['/backend/translations/index'], $params);
+                    $route = ArrayHelper::merge(['/translations'], $params);
                     echo SourceMessageSearch::isActiveTranslation([
                         'url'       => $route,
                         'current'   => $status,
@@ -51,7 +51,7 @@ AppTranslateAsset::register($this);
         <?php echo Html::encode($this->title); ?>
         <span class="pull-right btn-group">
             <a class="btn btn-success" href="<?php
-                echo Url::to(['/backend/translations/rescan']); ?>"><i class="fa fa-refresh"></i> <?php
+                echo Url::to(['/translations/rescan']); ?>"><i class="fa fa-refresh"></i> <?php
                 echo Module::t('Rescan'); ?></a>
             <a class="btn btn-warning btn-ajax" action="translation-clear-cache"
                before-send-title="<?php echo Module::t('Request sent'); ?>"
@@ -59,7 +59,7 @@ AppTranslateAsset::register($this);
                success-title="<?php echo Module::t('Server Response'); ?>"
                success-message="<?php echo Module::t('Cache successfully cleared.'); ?>"
                href="<?php
-                    echo Url::to(['/backend/translations/clear-cache']); ?>"><i class="fa fa-recycle"></i> <?php
+                    echo Url::to(['/translations/clear-cache']); ?>"><i class="fa fa-recycle"></i> <?php
                     echo Module::t('Clear Cache'); ?></a>
         </span>
     </h2>
