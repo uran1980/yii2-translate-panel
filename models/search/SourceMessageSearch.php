@@ -64,7 +64,7 @@ class SourceMessageSearch extends SourceMessage
         $i18n = Yii::$app->i18n;
         $this->config = [
             'languages'     => $i18n->languages,
-            'sourcePath'    => $i18n->sourcePath,
+            'sourcePath'    => (is_string($i18n->sourcePath) ? [$i18n->sourcePath] : $i18n->sourcePath),
             'translator'    => $i18n->translator,
             'sort'          => $i18n->sort,
             'removeUnused'  => $i18n->removeUnused,
@@ -297,9 +297,13 @@ class SourceMessageSearch extends SourceMessage
         if (!isset($this->config['sourcePath'], $this->config['languages'])) {
             throw new Exception('The configuration must specify "sourcePath" and "languages".');
         }
-        if (!is_dir($this->config['sourcePath'])) {
-            throw new Exception("The source path {$this->config['sourcePath']} is not a valid directory.");
+
+        foreach ($this->config['sourcePath'] as $sourcePath) {
+            if (!is_dir($sourcePath)) {
+                throw new Exception("The source path {$sourcePath} is not a valid directory.");
+            }
         }
+
         if (empty($this->config['format']) || !in_array($this->config['format'], ['php', 'po', 'db'])) {
             throw new Exception('Format should be either "php", "po" or "db".');
         }
@@ -314,7 +318,14 @@ class SourceMessageSearch extends SourceMessage
             throw new Exception("Languages cannot be empty.");
         }
 
-        $files    = FileHelper::findFiles(realpath($this->config['sourcePath']), $this->config);
+        $files = [];
+        foreach ( $this->config['sourcePath'] as $sourcePath ) {
+            $files = array_merge(
+                array_values($files),
+                array_values(FileHelper::findFiles(realpath($sourcePath), $this->config))
+            );
+        }
+
         $messages = [];
         foreach ($files as $file) {
             $messages = array_merge_recursive($messages, $this->extractMessages($file, $this->config['translator']));

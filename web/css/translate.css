@@ -6,6 +6,16 @@
     margin-bottom: 10px !important; }
 .nowrap {
     white-space: nowrap !important; }
+a,
+a:active,
+a:visited,
+a:link,
+a:focus,
+a:hover,
+input[type="button"],
+input[type="submit"],
+button {
+  outline: none; }
 
 .translation-tabs .nav-tabs > li > a:hover {
   background-color: #eaeaea; }
