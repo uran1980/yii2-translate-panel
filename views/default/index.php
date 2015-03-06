@@ -64,7 +64,6 @@ AppTranslateAsset::register($this);
         </span>
     </h2>
     <?php
-//    Pjax::begin();
     echo GridView::widget([
         'filterModel' => $searchModel,
         'dataProvider' => $searchModel->search(Yii::$app->getRequest()->get()),
@@ -116,7 +115,6 @@ AppTranslateAsset::register($this);
             ],
             [
                 'attribute' => 'translation',
-//                'label' => Module::t('Message Translations'),
                 'headerOptions' => [
                     'width' => '400',
                 ],
