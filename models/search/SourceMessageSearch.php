@@ -525,9 +525,12 @@ class SourceMessageSearch extends SourceMessage
                             $message = stripcslashes($buffer[2][1]);
                             $message = mb_substr($message, 1, mb_strlen($message) - 2);
 
-                            $messages[$category][]        = $message;
+                            $messages[$category][] = $message;
                             foreach ($this->config['sourcePath'] as $soursePath) {
-                                $this->locations[$category][] = [md5($message) => str_replace(realpath($soursePath), '', $fileName)];
+                                $location = str_replace(realpath($soursePath), '', $fileName);
+                                if ( $location !== $fileName ) {
+                                    $this->locations[$category][] = [md5($message) => $location];
+                                }
                             }
                         } else {
                             // invalid call or dynamic call we can't extract
