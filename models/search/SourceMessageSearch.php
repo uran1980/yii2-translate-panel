@@ -526,7 +526,9 @@ class SourceMessageSearch extends SourceMessage
                             $message = mb_substr($message, 1, mb_strlen($message) - 2);
 
                             $messages[$category][]        = $message;
-                            $this->locations[$category][] = [md5($message) => str_replace(realpath($this->config['sourcePath']), '', $fileName)];
+                            foreach ($this->config['sourcePath'] as $soursePath) {
+                                $this->locations[$category][] = [md5($message) => str_replace(realpath($soursePath), '', $fileName)];
+                            }
                         } else {
                             // invalid call or dynamic call we can't extract
                             $line = Console::ansiFormat($this->getLine($buffer), [Console::FG_CYAN]);
