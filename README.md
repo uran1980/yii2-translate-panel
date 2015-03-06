@@ -1,6 +1,6 @@
 # Yii2 Translate Panel
 
-[Yii2](http://www.yiiframework.com) Translate Panel makes the translation of your application so simple.
+[Yii2](http://www.yiiframework.com) Translate Panel makes the translation of your application awesome.
 
 This module based on [i18n (internalization) module](https://github.com/zelenin/yii2-i18n-module) with greatly improved usability in mind (see screen shots below).
 
