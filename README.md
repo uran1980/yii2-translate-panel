@@ -70,14 +70,14 @@ return [
         'i18n' => [
             'class' => uran1980\yii\modules\i18n\Module::className(),
             'controllerMap' => [
-                'default' => uran1980\yii\modules\i18n\controllers\TranslationsController::className(),
+                'default' => uran1980\yii\modules\i18n\controllers\DefaultController::className(),
             ],
             // example for set access to module (if required):
             'as access' => [
                 'class' => yii\filters\AccessControl::className(),
                 'rules' => [
                     'controllers'   => ['i18n/default'],
-                    'actions'       => ['index', 'update'],
+                    'actions'       => ['index', 'update', 'rescan', 'clear-cache'],
                     'allow'         => true,
                     'roles'         => ['admin'],
                 ],

@@ -8,7 +8,7 @@ use uran1980\yii\modules\i18n\Module;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
 use uran1980\yii\modules\i18n\helpers\AppHelper;
 
-class TranslationsController extends \Zelenin\yii\modules\I18n\controllers\DefaultController
+class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultController
 {
     public function actionIndex()
     {
