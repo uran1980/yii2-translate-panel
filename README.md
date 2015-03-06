@@ -47,7 +47,7 @@ return [
             'class'        => uran1980\yii\modules\i18n\components\I18N::className(),
             'languages'    => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
             'format'       => 'db',
-            'sourcePath'   => __DIR__ . '/..',
+            'sourcePath'   => __DIR__ . '/../../frontend',
             'messagePath'  => __DIR__  . '/../../messages',
             'translations' => [
                 '*' => [

@@ -63,6 +63,7 @@ class SourceMessageSearch extends SourceMessage
 
         $i18n = Yii::$app->i18n;
         $this->config = [
+            'languages'     => $i18n->languages,
             'sourcePath'    => $i18n->sourcePath,
             'translator'    => $i18n->translator,
             'sort'          => $i18n->sort,
