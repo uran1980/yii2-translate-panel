@@ -120,11 +120,16 @@ var appTranslate = appTranslate || {};
          * @param data (object)
          */
         appTranslate.delete = function (data) {
-            var $element = data.$element,
-                $row     = $element.closest('tr')
+            var $element   = data.$element,
+                $rowsCount = $element.closest('tbody').find('tr').length,
+                $row       = $element.closest('tr')
             ;
             if ( data.status === 'success' ) {
-                $row.addClass('danger').fadeOut('slow');
+                if ( $rowsCount > 1 ) {
+                    $row.addClass('danger').fadeOut('slow').remove();
+                } else {
+                    location.reload();
+                }
             }
         };
 
@@ -132,11 +137,16 @@ var appTranslate = appTranslate || {};
          * @param data (object)
          */
         appTranslate.restore = function (data) {
-            var $element = data.$element,
-                $row     = $element.closest('tr')
+            var $element   = data.$element,
+                $rowsCount = $element.closest('tbody').find('tr').length,
+                $row       = $element.closest('tr')
             ;
             if ( data.status === 'success' ) {
-                $row.addClass('success').fadeOut('slow');
+                if ( $rowsCount > 1 ) {
+                    $row.addClass('success').fadeOut('slow').remove();
+                } else {
+                    location.reload();
+                }
             }
         };
 

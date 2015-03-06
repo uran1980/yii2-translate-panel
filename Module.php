@@ -6,7 +6,7 @@ use Yii;
 
 class Module extends \yii\base\Module
 {
-    public $pageSize = 50;
+    public $pageSize = 25;
 
     public static function module()
     {

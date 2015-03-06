@@ -15,7 +15,18 @@ a:hover,
 input[type="button"],
 input[type="submit"],
 button {
-  outline: none; }
+  outline: none !important; }
+
+.tabs-mini .nav > li > a {
+  padding: 0 5px; }
+.tabs-mini .nav-tabs {
+  border-bottom: 1px solid #aeaeae; }
+.tabs-mini .nav-tabs > li > a:hover {
+  border-color: #eee #eee #aeaeae; }
+.tabs-mini .nav-tabs > li.active > a,
+.tabs-mini .nav-tabs > li.active > a:hover,
+.tabs-mini .nav-tabs > li.active > a:focus {
+  border: 1px solid #aeaeae; }
 
 .translation-tabs .nav-tabs > li > a:hover {
   background-color: #eaeaea; }
