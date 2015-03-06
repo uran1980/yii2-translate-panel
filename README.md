@@ -44,9 +44,11 @@ return [
             'showScriptName'    => false, // false - means that index.php will not be part of the URLs
         ],
         'i18n' => [
-            'class'=> uran1980\yii\modules\i18n\components\I18N::className(),
-            'languages' => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
-            'format' => 'db',
+            'class'        => uran1980\yii\modules\i18n\components\I18N::className(),
+            'languages'    => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
+            'format'       => 'db',
+            'sourcePath'   => __DIR__ . '/..',
+            'messagePath'  => __DIR__  . '/../../messages',
             'translations' => [
                 '*' => [
                     'class'           => yii\i18n\DbMessageSource::className(),

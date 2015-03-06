@@ -6,10 +6,11 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
 {
     /**
      * String, required, root directory of all source files
+     * for example: __DIR__ . '/..'
      *
      * @var string
      */
-    public $sourcePath = __DIR__ . DIRECTORY_SEPARATOR . '..';                  // TODO
+    public $sourcePath = '';
 
     /**
      * String, the name of the function for translating messages.
@@ -80,7 +81,7 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
      *   'db'  - output format is for saving messages to database.
      *   'po'  - output format is for saving messages to gettext po files.
      */
-    public $format = 'db';
+    public $format = 'php';
 
     /**
      * Connection component to use. Optional
@@ -92,11 +93,12 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
 
     /**
      * Root directory containing message translations
+     * for example: __DIR__  . '/../../messages'
      * (used only for 'php' or 'po' formats).
      *
      * @var string
      */
-    public $messagePath = __DIR__  . '/../../messages';                         // TODO
+    public $messagePath = '';
 
     /**
      * Boolean, whether the message file should be overwritten with the merged messages
