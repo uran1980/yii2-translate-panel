@@ -42,13 +42,7 @@ class SourceMessageSearch extends SourceMessage
     /**
      * @var array
      */
-    protected $config = [
-        'translator'    => 'Yii::t',
-        'overwrite'     => false,
-        'removeUnused'  => false,
-        'sort'          => false,
-        'format'        => 'php',
-    ];
+    protected $config = [];
 
     /**
      * @return SourceMessageSearch
@@ -59,6 +53,28 @@ class SourceMessageSearch extends SourceMessage
             self::$_instance = new self();
 
         return self::$_instance;
+    }
+
+    public function init()
+    {
+        if (!Yii::$app->has('i18n')) {
+            throw new Exception('The i18n component does not exist');
+        }
+
+        $i18n = Yii::$app->i18n;
+        $this->config = [
+            'sourcePath'    => $i18n->sourcePath,
+            'translator'    => $i18n->translator,
+            'sort'          => $i18n->sort,
+            'removeUnused'  => $i18n->removeUnused,
+            'only'          => $i18n->only,
+            'except'        => $i18n->except,
+            'format'        => $i18n->format,
+            'db'            => $i18n->db,
+            'messagePath'   => $i18n->messagePath,
+            'overwrite'     => $i18n->overwrite,
+            'catalog'       => $i18n->catalog,
+        ];
     }
 
     /**
@@ -273,22 +289,12 @@ class SourceMessageSearch extends SourceMessage
      * This command will search through source code files and extract
      * messages that need to be translated in different languages.
      *
-     * @param string $configFile the path or alias of the configuration file.
-     * You may use the "yii message/config" command to generate
-     * this file and then customize it for your needs.
      * @throws Exception on failure.
      */
-    public function extract($configFile)
+    public function extract()
     {
-        $configFile = Yii::getAlias($configFile);
-        if (!is_file($configFile)) {
-            throw new Exception("The configuration file does not exist: $configFile");
-        }
-
-        $this->config = array_merge($this->config, require($configFile));
-
         if (!isset($this->config['sourcePath'], $this->config['languages'])) {
-            throw new Exception('The configuration file must specify "sourcePath" and "languages".');
+            throw new Exception('The configuration must specify "sourcePath" and "languages".');
         }
         if (!is_dir($this->config['sourcePath'])) {
             throw new Exception("The source path {$this->config['sourcePath']} is not a valid directory.");

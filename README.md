@@ -46,6 +46,7 @@ return [
         'i18n' => [
             'class'=> uran1980\yii\modules\i18n\components\I18N::className(),
             'languages' => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
+            'format' => 'db',
             'translations' => [
                 '*' => [
                     'class'           => yii\i18n\DbMessageSource::className(),
