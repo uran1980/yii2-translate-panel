@@ -31,8 +31,7 @@
         "rmrevin/yii2-fontawesome": "*",
 
         "bower-asset/animate.css": "*",
-        "bower-asset/jquery-form": "*",
-        "bower-asset/scroll-to-top": "*"
+        "bower-asset/jquery-form": "*"
     },
     "autoload": {
         "psr-4": {
