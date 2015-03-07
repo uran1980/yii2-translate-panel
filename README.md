@@ -86,7 +86,7 @@ return [
                     'controllers'   => ['i18n/default'],
                     'actions'       => ['index', 'update', 'rescan', 'clear-cache', 'delete', 'restore'],
                     'allow'         => true,
-                    'roles'         => ['admin'],
+                    'roles'         => ['translator'],
                 ],
             ],
         ],
