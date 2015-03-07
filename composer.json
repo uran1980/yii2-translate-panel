@@ -27,7 +27,7 @@
     },
     "require": {
         "yiisoft/yii2": "~2",
-        "zelenin/yii2-i18n-module": "0.1.5",
+        "zelenin/yii2-i18n-module": "0.1.*",
         "rmrevin/yii2-fontawesome": "*",
 
         "bower-asset/animate.css": "*",
