@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Json;
 
-$locations = Json::decode($model->location);
+$locations = isset($model->location) ? Json::decode($model->location) : [];
 ?>
 <div class="source-message-content"><?php
     echo Html::a($model->message, ['update', 'id' => $model->id], [
