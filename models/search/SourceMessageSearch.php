@@ -409,29 +409,36 @@ class SourceMessageSearch extends SourceMessage
         $obsolete = array_keys($obsolete);
         $this->stdout("Inserting new messages...");
         $savedFlag = false;
+        $columnNames = $db->getTableSchema($sourceMessageTable)->columnNames;
+        $hasLocationColumn = in_array('location', $columnNames) ?: false;
 
         foreach ($new as $category => $msgs) {
             foreach ($msgs as $m) {
                 $savedFlag  = true;
                 $msgHash    = md5($m);
-
+                $sourceMessageData = [
+                    'category'  => $category,
+                    'message'   => $m,
+                ];
+                if ( true === $hasLocationColumn ) {
+                    $sourceMessageData['location']  = $this->extractLocations($category, $m);
+                    $sourceMessageData['hash']      = $msgHash;
+                }
                 $db->createCommand()
-                    ->insert($sourceMessageTable, [
-                        'category'  => $category,
-                        'hash'      => $msgHash,
-                        'message'   => $m,
-                        'location'  => $this->extractLocations($category, $m),
-                    ])
+                    ->insert($sourceMessageTable, $sourceMessageData)
                     ->execute()
                 ;
                 $lastID = $db->getLastInsertID();
                 foreach ($languages as $language) {
+                    $messageData = [
+                        'id'        => $lastID,
+                        'language'  => $language,
+                    ];
+                    if ( true === $hasLocationColumn ) {
+                        $messageData['hash'] = $msgHash;
+                    }
                     $db->createCommand()
-                        ->insert($messageTable, [
-                           'id'         => $lastID,
-                           'language'   => $language,
-                            'hash'      => $msgHash,
-                        ])
+                        ->insert($messageTable, $messageData)
                         ->execute()
                     ;
                 }
