@@ -126,7 +126,9 @@ var appTranslate = appTranslate || {};
             ;
             if ( data.status === 'success' ) {
                 if ( $rowsCount > 1 ) {
-                    $row.addClass('danger').fadeOut('slow').remove();
+                    $row.addClass('danger').fadeOut('slow', function () {
+                        $row.remove();
+                    });
                 } else {
                     location.reload();
                 }
@@ -143,7 +145,9 @@ var appTranslate = appTranslate || {};
             ;
             if ( data.status === 'success' ) {
                 if ( $rowsCount > 1 ) {
-                    $row.addClass('success').fadeOut('slow').remove();
+                    $row.addClass('success').fadeOut('slow', function () {
+                        $row.remove();
+                    });
                 } else {
                     location.reload();
                 }

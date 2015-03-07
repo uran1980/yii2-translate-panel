@@ -57,7 +57,7 @@ return [
                 '*' => [
                     'class'           => yii\i18n\DbMessageSource::className(),
                     'enableCaching'   => true,
-                    'cachingDuration' => 60 * 60 * 2, // cache on 2 hourse
+                    'cachingDuration' => 60 * 60 * 2, // cache on 2 hours
                 ],
             ],
         ],

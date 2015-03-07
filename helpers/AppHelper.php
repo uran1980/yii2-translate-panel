@@ -64,22 +64,19 @@ class AppHelper
      */
     public static function getRequestParams($type = 'all')
     {
-        $request    = Yii::$app->getRequest();
-        $getParams  = $request->get();
-        $postParams = $request->post();
-
+        $request = Yii::$app->getRequest();
         switch ($type) {
             case 'get':
-                $params = $getParams;
+                $params = $request->get();
                 break;
 
             case 'post':
-                $params = $postParams;
+                $params = $request->post();
                 break;
 
             case 'all':
             default:
-                $params = ArrayHelper::merge($getParams, $postParams);
+                $params = ArrayHelper::merge($request->get(), $request->post());
                 break;
         }
 
