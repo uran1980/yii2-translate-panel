@@ -31,7 +31,6 @@
         "rmrevin/yii2-fontawesome": "*",
         "uran1980/yii2-igrowl-widget": "*",
 
-        "bower-asset/animate.css": "*",
         "bower-asset/jquery-form": "*"
     },
     "autoload": {
