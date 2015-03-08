@@ -1,7 +1,7 @@
 {
     "name": "uran1980/yii2-translate-panel",
     "description": "Yii2 Translate Panel makes the translation of your application so simple",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "type": "yii2-extension",
     "keywords": [
         "yii2",
@@ -29,6 +29,7 @@
         "yiisoft/yii2": "~2",
         "zelenin/yii2-i18n-module": "0.1.*",
         "rmrevin/yii2-fontawesome": "*",
+        "uran1980/yii2-igrowl-widget": "*",
 
         "bower-asset/animate.css": "*",
         "bower-asset/jquery-form": "*"
