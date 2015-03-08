@@ -14,7 +14,6 @@ class AppTranslateAsset extends \yii\web\AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'uran1980\yii\modules\i18n\assets\JqueryFormAsset',
-        'uran1980\yii\modules\i18n\assets\AppIGrowlAsset',
         'uran1980\yii\modules\i18n\assets\AppAjaxButtonsAsset',
         'uran1980\yii\modules\i18n\assets\AppChosenSelectAsset',
     ];
