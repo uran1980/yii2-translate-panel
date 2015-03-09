@@ -21,7 +21,6 @@ $this->title = Module::t('Translations');
 $this->params['breadcrumbs'][] = $this->title;
 
 AppTranslateAsset::register($this);
-ScrollToTop::widget();
 ?>
 
 <div class="translations-index">
@@ -217,3 +216,4 @@ ScrollToTop::widget();
         ],
     ]); ?>
 </div>
+<?php echo ScrollToTop::widget();
