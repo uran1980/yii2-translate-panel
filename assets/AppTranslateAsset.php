@@ -15,6 +15,6 @@ class AppTranslateAsset extends \yii\web\AssetBundle
         'yii\web\JqueryAsset',
         'uran1980\yii\modules\i18n\assets\JqueryFormAsset',
         'uran1980\yii\modules\i18n\assets\AppAjaxButtonsAsset',
-        'uran1980\yii\modules\i18n\assets\AppChosenSelectAsset',
+        'uran1980\yii\widgets\chosen\AppChosenSelectAsset',
     ];
 }

@@ -9,6 +9,7 @@ use uran1980\yii\modules\i18n\components\grid\ActionColumn;
 use uran1980\yii\modules\i18n\components\grid\DataColumn;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
 use uran1980\yii\modules\i18n\assets\AppTranslateAsset;
+use uran1980\yii\widgets\scrollToTop\ScrollToTop;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
@@ -20,6 +21,7 @@ $this->title = Module::t('Translations');
 $this->params['breadcrumbs'][] = $this->title;
 
 AppTranslateAsset::register($this);
+ScrollToTop::widget();
 ?>
 
 <div class="translations-index">
