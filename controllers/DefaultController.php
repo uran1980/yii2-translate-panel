@@ -24,8 +24,8 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         // ----------------------- SHOW RESCAN RESULT --------------------------
         $message  = Module::t('Rescan successfully completed.') . '<br />';
         $message .= Html::ul([
-            Module::t('New messages:') . ' ' . isset($result['new']) ? $result['new'] : 0,
-            Module::t('Obsolete messages:') . ' ' . isset($result['obsolete']) ? $result['obsolete'] : 0,
+            Module::t('New messages:') . ' ' . (isset($result['new']) ? $result['new'] : 0),
+            Module::t('Obsolete messages:') . ' ' . (isset($result['obsolete']) ? $result['obsolete'] : 0),
         ]);
         AppHelper::showSuccessMessage($message);
 
