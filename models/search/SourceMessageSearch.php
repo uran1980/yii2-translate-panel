@@ -165,6 +165,11 @@ class SourceMessageSearch extends SourceMessage
         $query = SourceMessage::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ],
+            ],
         ]);
 
         // check and populate params
