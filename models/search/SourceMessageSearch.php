@@ -296,6 +296,7 @@ class SourceMessageSearch extends SourceMessage
      * messages that need to be translated in different languages.
      *
      * @throws Exception on failure.
+     * @return array
      */
     public function extract()
     {
@@ -343,9 +344,9 @@ class SourceMessageSearch extends SourceMessage
                 }
                 if ($this->config['format'] === 'po') {
                     $catalog = isset($this->config['catalog']) ? $this->config['catalog'] : 'messages';
-                    $this->saveMessagesToPO($messages, $dir, $this->config['overwrite'], $this->config['removeUnused'], $this->config['sort'], $catalog);
+                    return $this->saveMessagesToPO($messages, $dir, $this->config['overwrite'], $this->config['removeUnused'], $this->config['sort'], $catalog);
                 } else {
-                    $this->saveMessagesToPHP($messages, $dir, $this->config['overwrite'], $this->config['removeUnused'], $this->config['sort']);
+                    return $this->saveMessagesToPHP($messages, $dir, $this->config['overwrite'], $this->config['removeUnused'], $this->config['sort']);
                 }
             }
         } elseif ($this->config['format'] === 'db') {
@@ -355,7 +356,7 @@ class SourceMessageSearch extends SourceMessage
             }
             $sourceMessageTable = isset($this->config['sourceMessageTable']) ? $this->config['sourceMessageTable'] : '{{%source_message}}';
             $messageTable = isset($this->config['messageTable']) ? $this->config['messageTable'] : '{{%message}}';
-            $this->saveMessagesToDb(
+            return $this->saveMessagesToDb(
                 $messages,
                 $db,
                 $sourceMessageTable,
@@ -472,6 +473,17 @@ class SourceMessageSearch extends SourceMessage
                 $this->stdout("updated." . PHP_EOL);
             }
         }
+
+        // ------------------------------ COUNTER ------------------------------
+        $counter = ['new' => 0, 'obsolete' => 0];
+        foreach ( $new as $msgs ) {
+            $counter['new'] += count($msgs);
+        }
+        foreach ( $obsolete as $msgs ) {
+            $counter['obsolete'] += count($msgs);
+        }
+
+        return $counter;
     }
 
     /**

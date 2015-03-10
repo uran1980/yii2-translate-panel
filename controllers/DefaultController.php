@@ -7,6 +7,7 @@ use yii\base\Model;
 use uran1980\yii\modules\i18n\Module;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
 use uran1980\yii\modules\i18n\helpers\AppHelper;
+use yii\helpers\Html;
 
 class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultController
 {
@@ -18,10 +19,15 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
     public function actionRescan()
     {
         // ------------------------- RESCAN MESSAGES ---------------------------
-        SourceMessageSearch::getInstance()->extract('@common/config/messages.php');
+        $result = SourceMessageSearch::getInstance()->extract();
 
         // ----------------------- SHOW RESCAN RESULT --------------------------
-        AppHelper::showSuccessMessage(Module::t('Rescan successfully completed.'));
+        $message  = Module::t('Rescan successfully completed.') . '<br />';
+        $message .= Html::ul([
+            Module::t('New messages:') . ' ' . isset($result['new']) ? $result['new'] : 0,
+            Module::t('Obsolete messages:') . ' ' . isset($result['obsolete']) ? $result['obsolete'] : 0,
+        ]);
+        AppHelper::showSuccessMessage($message);
 
         // ---------------------------- REDIRECT -------------------------------
         if ( ($referrer = Yii::$app->getRequest()->referrer) ) {
