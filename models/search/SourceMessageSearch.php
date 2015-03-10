@@ -534,11 +534,11 @@ class SourceMessageSearch extends SourceMessage
 
                             $messages[$category][] = $message;
                             foreach ($this->config['sourcePath'] as $sourcePath) {
-                                $parts = explode('/', $sourcePath);
-                                $key   = count($parts) - 1;
-                                $location = $parts[$key] . str_replace(realpath($sourcePath), '', $fileName);
+                                $location = str_replace(realpath($sourcePath), '', $fileName);
                                 if ( $location !== $fileName ) {
-                                    $this->locations[$category][] = [md5($message) => $location];
+                                    $parts = explode('/', $sourcePath);
+                                    $key   = count($parts) - 1;
+                                    $this->locations[$category][] = [md5($message) => $parts[$key] . $location];
                                 }
                             }
                         } else {
