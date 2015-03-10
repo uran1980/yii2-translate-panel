@@ -533,8 +533,10 @@ class SourceMessageSearch extends SourceMessage
                             $message = mb_substr($message, 1, mb_strlen($message) - 2);
 
                             $messages[$category][] = $message;
-                            foreach ($this->config['sourcePath'] as $soursePath) {
-                                $location = str_replace(realpath($soursePath), '', $fileName);
+                            foreach ($this->config['sourcePath'] as $sourcePath) {
+                                $parts = explode('/', $sourcePath);
+                                $key   = count($parts) - 1;
+                                $location = $parts[$key] . str_replace(realpath($sourcePath), '', $fileName);
                                 if ( $location !== $fileName ) {
                                     $this->locations[$category][] = [md5($message) => $location];
                                 }
