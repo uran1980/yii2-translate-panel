@@ -49,7 +49,7 @@ AppTranslateAsset::register($this);
         </div>
     </div>
     <h2>
-        <?php echo Html::encode($this->title); ?>
+        <?php echo Html::a($this->title, ['/translations']); ?>
         <span class="pull-right btn-group">
             <a class="btn btn-success" href="<?php
                 echo Url::to(['/translations/rescan']); ?>"><i class="fa fa-refresh"></i> <?php

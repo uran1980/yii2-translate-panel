@@ -1,7 +1,7 @@
 {
     "name": "uran1980/yii2-translate-panel",
     "description": "Yii2 Translate Panel makes the translation of your application awesome!",
-    "version": "0.1.14",
+    "version": "0.1.15",
     "type": "yii2-extension",
     "keywords": [
         "yii2",
@@ -11,7 +11,7 @@
         "translate-panel"
     ],
     "homepage": "https://github.com/uran1980/yii2-translate-panel",
-    "time": "2015-03-11 12:30",
+    "time": "2015-03-11 17:30",
     "license": "MIT",
     "authors": [
         {
@@ -32,6 +32,7 @@
         "uran1980/yii2-igrowl-widget": "*",
         "uran1980/yii2-chosen-select": "*",
         "uran1980/yii2-scroll-to-top": "*",
+        "uran1980/yii2-bootstrap-confirmation": "*",
 
         "bower-asset/jquery-form": "*",
         "bower-asset/bootstrap-confirmation2": "*"
