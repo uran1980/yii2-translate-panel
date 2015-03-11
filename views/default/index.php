@@ -5,6 +5,7 @@
  */
 use uran1980\yii\modules\i18n\Module;
 use uran1980\yii\modules\i18n\components\grid\GridView;
+use uran1980\yii\modules\i18n\components\grid\SerialColumn;
 use uran1980\yii\modules\i18n\components\grid\ActionColumn;
 use uran1980\yii\modules\i18n\components\grid\DataColumn;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
@@ -70,18 +71,22 @@ AppTranslateAsset::register($this);
         'dataProvider' => $searchModel->search(Yii::$app->getRequest()->get()),
         'columns' => [
             // ----------------------------- ID --------------------------------
+//            [
+//                'attribute' => 'id',
+//                'headerOptions' => [
+//                    'width' => '30',
+//                ],
+//                'contentOptions' => [
+//                    'class' => 'text-align-center',
+//                ],
+//                'value' => function ($model, $key, $index, $dataColumn) {
+//                    return $model->id;
+//                },
+//                'filter' => false,
+////                'visible' => false,
+//            ],
             [
-                'attribute' => 'id',
-                'headerOptions' => [
-                    'width' => '30',
-                ],
-                'contentOptions' => [
-                    'class' => 'text-align-center',
-                ],
-                'value' => function ($model, $key, $index, $dataColumn) {
-                    return $model->id;
-                },
-                'filter' => false,
+                'class' => SerialColumn::className(),
             ],
             // ----------------------- SOURCE MESSAGES -------------------------
             [
