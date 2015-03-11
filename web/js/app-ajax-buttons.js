@@ -24,7 +24,17 @@ var appAjaxButtons = appAjaxButtons || {};
                 delay       = 2500
             ;
 
-            if ( !url || $element.data('locked') === true ) {
+            // confirm btn clicked
+            if ( $element.attr('data-apply') === 'confirmation' ) {
+                $element    = $element.closest('span.btn-ajax-wrap').find('.btn-ajax').attr('href', url);
+                postData    = $element.attr('data') || '';
+                $icon       = $element.find('i');
+                iconClass   = $icon.attr('class');
+
+                $element.removeAttr('data-toggle');
+            }
+
+            if ( !url || $element.data('locked') === true || $element.attr('data-toggle') === 'confirmation' ) {
                 return false;
             }
 
@@ -121,7 +131,8 @@ var appAjaxButtons = appAjaxButtons || {};
          *                          ACTIONS HANDLER
          **********************************************************************/
         appAjaxButtons.actionsHandler = function () {
-            $('body').delegate('.btn-ajax', 'click', function () {
+            try{$('[data-toggle="confirmation"]').confirmation();}catch(ex){}
+            $('body').delegate('.btn-ajax, a[data-apply="confirmation"]', 'click', function () {
                 appAjaxButtons.ajaxButtonSubmit($(this));
                 return false;
             });

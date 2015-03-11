@@ -1,7 +1,7 @@
 {
     "name": "uran1980/yii2-translate-panel",
     "description": "Yii2 Translate Panel makes the translation of your application awesome!",
-    "version": "0.1.11",
+    "version": "0.1.12",
     "type": "yii2-extension",
     "keywords": [
         "yii2",
@@ -33,7 +33,8 @@
         "uran1980/yii2-chosen-select": "*",
         "uran1980/yii2-scroll-to-top": "*",
 
-        "bower-asset/jquery-form": "*"
+        "bower-asset/jquery-form": "*",
+        "bower-asset/bootstrap-confirmation2": "*"
     },
     "autoload": {
         "psr-4": {

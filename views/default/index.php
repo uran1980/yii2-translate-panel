@@ -180,27 +180,43 @@ AppTranslateAsset::register($this);
                     },
                     'delete' => function ($url, $model, $key) {
                         if ( strstr($model->message, '@@') ) {
-                            return Html::a('<i class="glyphicon glyphicon-refresh"></i>', str_replace('delete', 'restore', $url), [
+                            return '<span class="btn-ajax-wrap">' . Html::a('<i class="glyphicon glyphicon-refresh"></i>', str_replace('delete', 'restore', $url), [
                                 'class'                 => 'btn btn-xs btn-info btn-ajax',
                                 'action'                => 'translation-restore',
-                                'title'                 => Module::t('Restore'),
-                                'data-confirm'          => Module::t('Are you sure you want to restore this item?'),
+//                                'title'                 => Module::t('Restore'),
+//                                'data-confirm'          => Module::t('Are you sure you want to restore this item?'),
+                                'data-toggle'           => 'confirmation',
+                                'data-singleton'        => 'true',
+                                'data-placement'        => 'top',
+                                'data-btn-ok-lable'     => Module::t('Yes'),
+                                'data-btn-ok-class'     => 'btn-xs btn-success',
+                                'data-btn-cancel'       => Module::t('No'),
+                                'data-btn-cancel-class' => 'btn-xs btn-warning',
+                                'data-popout'           => 'true',
                                 'before-send-title'     => Module::t('Request sent'),
                                 'before-send-message'   => Module::t('Please, wait...'),
                                 'success-title'         => Module::t('Server Response'),
                                 'success-message'       => Module::t('Message successfully restored.'),
-                            ]);
+                            ]) . '</span>';
                         } else {
-                            return Html::a('<i class="glyphicon glyphicon-trash"></i>', $url, [
+                            return '<span class="btn-ajax-wrap">' . Html::a('<i class="glyphicon glyphicon-trash"></i>', $url, [
                                 'class'                 => 'btn btn-xs btn-danger btn-ajax',
                                 'action'                => 'translation-delete',
-                                'title'                 => Module::t('Delete'),
-                                'data-confirm'          => Module::t('Are you sure you want to delete this item?'),
+//                                'title'                 => Module::t('Delete'),
+//                                'data-confirm'          => Module::t('Are you sure you want to delete this item?'),
+                                'data-toggle'           => 'confirmation',
+                                'data-singleton'        => 'true',
+                                'data-placement'        => 'top',
+                                'data-btn-ok-lable'     => Module::t('Yes'),
+                                'data-btn-ok-class'     => 'btn-xs btn-success',
+                                'data-btn-cancel'       => Module::t('No'),
+                                'data-btn-cancel-class' => 'btn-xs btn-warning',
+                                'data-popout'           => 'true',
                                 'before-send-title'     => Module::t('Request sent'),
                                 'before-send-message'   => Module::t('Please, wait...'),
                                 'success-title'         => Module::t('Server Response'),
                                 'success-message'       => Module::t('Message successfully deleted.'),
-                            ]);
+                            ]) . '</span>';
                         }
                     },
                 ],
