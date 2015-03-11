@@ -89,16 +89,6 @@ class SourceMessage extends ActiveRecord
         ;
     }
 
-    /**
-     * ActiveRelation
-     * @see http://www.yiiframework.com/wiki/621/filter-sort-by-calculated-related-fields-in-gridview-yii-2-0/#hh11
-     * @see http://www.ramirezcobos.com/2014/04/16/displaying-sorting-and-filtering-model-relations-on-a-gridview-yii2/
-     */
-    public function getTranslation()
-    {
-        return $this->getMessages();
-    }
-
     public function initMessages()
     {
         $messages = [];

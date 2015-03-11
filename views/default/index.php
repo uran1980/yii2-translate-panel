@@ -69,6 +69,7 @@ AppTranslateAsset::register($this);
         'filterModel' => $searchModel,
         'dataProvider' => $searchModel->search(Yii::$app->getRequest()->get()),
         'columns' => [
+            // ----------------------------- ID --------------------------------
             [
                 'attribute' => 'id',
                 'headerOptions' => [
@@ -82,6 +83,7 @@ AppTranslateAsset::register($this);
                 },
                 'filter' => false,
             ],
+            // ----------------------- SOURCE MESSAGES -------------------------
             [
                 'attribute' => 'message',
                 'format' => 'raw',
@@ -97,6 +99,7 @@ AppTranslateAsset::register($this);
                     ]);
                 },
             ],
+            // ----------------------- COPY BUTTON -----------------------------
             [
                 'class'  => ActionColumn::className(),
                 'header' => '<i class="fa fa-copy"></i>',
@@ -114,6 +117,7 @@ AppTranslateAsset::register($this);
                     },
                 ],
             ],
+            // --------------------- MESSAGE TRANSLATIONS ----------------------
             [
                 'attribute' => 'translation',
                 'headerOptions' => [
@@ -132,6 +136,7 @@ AppTranslateAsset::register($this);
                 },
                 'format' => 'raw',
             ],
+            // --------------------------- CATEGORY ----------------------------
             [
                 'attribute' => 'category',
                 'headerOptions' => [
@@ -146,6 +151,7 @@ AppTranslateAsset::register($this);
                 'filter' => ArrayHelper::map($searchModel::getCategories(), 'category', 'category'),
                 'filterInputOptions' => DataColumn::$filterOptionsForChosenSelect,
             ],
+            // ---------------------------- STATUS -----------------------------
             [
                 'attribute' => 'status',
                 'headerOptions' => [
@@ -163,6 +169,7 @@ AppTranslateAsset::register($this);
                 ),
                 'visible' => false,
             ],
+            // --------------------------- ACTIONS -----------------------------
             [
                 'class' => ActionColumn::className(),
                 'template' => '{save} {fullscreen} {delete}',
@@ -221,6 +228,7 @@ AppTranslateAsset::register($this);
                     },
                 ],
             ],
+            // --------------------------- LOCATIONS ---------------------------
             [
                 'attribute' => 'location',
                 'value' => function ($model, $key, $index, $dataColumn) {

@@ -13,6 +13,7 @@ use yii\i18n\GettextPoFile;
 use yii\helpers\Json;
 use uran1980\yii\modules\i18n\Module;
 use uran1980\yii\modules\i18n\models\SourceMessage;
+use Zelenin\yii\modules\I18n\models\Message;
 
 class SourceMessageSearch extends SourceMessage
 {
@@ -43,6 +44,11 @@ class SourceMessageSearch extends SourceMessage
      * @var array
      */
     protected $config = [];
+
+    /**
+     * @var string
+     */
+    public $translation;
 
     /**
      * @return SourceMessageSearch
@@ -149,9 +155,9 @@ class SourceMessageSearch extends SourceMessage
             ['category', 'safe'],
             ['message', 'safe'],
             ['status', 'safe'],
-//            // TODO filter with relation table
-//            // @see http://www.yiiframework.com/wiki/621/filter-sort-by-calculated-related-fields-in-gridview-yii-2-0/
-//            ['translation', 'safe'],
+            // for filter with relation table
+            // @see http://www.yiiframework.com/wiki/621/filter-sort-by-calculated-related-fields-in-gridview-yii-2-0/
+            ['translation', 'safe'],
 
         ];
     }
@@ -174,6 +180,7 @@ class SourceMessageSearch extends SourceMessage
 
         // check and populate params
         if (!($this->load($params) && $this->validate())) {
+            $query->joinWith(['messages']);
             return $dataProvider;
         }
 
@@ -187,10 +194,15 @@ class SourceMessageSearch extends SourceMessage
             $query->deleted();
         }
 
+        // search with related table
+        // @see http://www.yiiframework.com/wiki/621/filter-sort-by-calculated-related-fields-in-gridview-yii-2-0/
+        $query->joinWith(['messages' => function ($q) {
+            $q->where(['like', Message::tableName() . '.translation', $this->translation]);
+        }]);
+
         $query
             ->andFilterWhere(['like', 'category', $this->category])
             ->andFilterWhere(['like', 'message', $this->message])
-            ->andFilterWhere(['like', 'translation', $this->translation])
         ;
 
         return $dataProvider;
