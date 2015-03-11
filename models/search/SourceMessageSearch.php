@@ -69,18 +69,20 @@ class SourceMessageSearch extends SourceMessage
 
         $i18n = Yii::$app->i18n;
         $this->config = [
-            'languages'     => $i18n->languages,
-            'sourcePath'    => (is_string($i18n->sourcePath) ? [$i18n->sourcePath] : $i18n->sourcePath),
-            'translator'    => $i18n->translator,
-            'sort'          => $i18n->sort,
-            'removeUnused'  => $i18n->removeUnused,
-            'only'          => $i18n->only,
-            'except'        => $i18n->except,
-            'format'        => $i18n->format,
-            'db'            => $i18n->db,
-            'messagePath'   => $i18n->messagePath,
-            'overwrite'     => $i18n->overwrite,
-            'catalog'       => $i18n->catalog,
+            'languages'             => $i18n->languages,
+            'sourcePath'            => (is_string($i18n->sourcePath) ? [$i18n->sourcePath] : $i18n->sourcePath),
+            'translator'            => $i18n->translator,
+            'sort'                  => $i18n->sort,
+            'removeUnused'          => $i18n->removeUnused,
+            'only'                  => $i18n->only,
+            'except'                => $i18n->except,
+            'format'                => $i18n->format,
+            'db'                    => $i18n->db,
+            'messagePath'           => $i18n->messagePath,
+            'overwrite'             => $i18n->overwrite,
+            'catalog'               => $i18n->catalog,
+            'messageTable'          => $i18n->messageTable,
+            'sourceMessageTable'    => $i18n->sourceMessageTable,
         ];
     }
 
@@ -448,7 +450,9 @@ class SourceMessageSearch extends SourceMessage
                     ->insert($sourceMessageTable, $sourceMessageData)
                     ->execute()
                 ;
-                $lastID = $db->getLastInsertID();
+                $lastID = ($db->driverName == 'pgsql')
+                        ? $db->getLastInsertID($sourceMessageTable . '_id_seq')
+                        : $db->getLastInsertID();
                 foreach ($languages as $language) {
                     $messageData = [
                         'id'        => $lastID,

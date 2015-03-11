@@ -66,8 +66,8 @@ class m150109_093837_addI18nTables extends Migration
                 throw new InvalidConfigException('You should configure i18n component');
             }
 
-            $this->dropTable($i18n->sourceMessageTable);
             $this->dropTable($i18n->messageTable);
+            $this->dropTable($i18n->sourceMessageTable);
 
             return true;
         } else {
