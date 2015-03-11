@@ -196,9 +196,11 @@ class SourceMessageSearch extends SourceMessage
 
         // search with related table
         // @see http://www.yiiframework.com/wiki/621/filter-sort-by-calculated-related-fields-in-gridview-yii-2-0/
-        $query->joinWith(['messages' => function ($q) {
-            $q->where(['like', Message::tableName() . '.translation', $this->translation]);
-        }]);
+        if ( !empty($this->translation) ) {
+            $query->joinWith(['messages' => function ($q) {
+                $q->where(['like', Message::tableName() . '.translation', $this->translation]);
+            }]);
+        }
 
         $query
             ->andFilterWhere(['like', 'category', $this->category])
