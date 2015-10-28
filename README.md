@@ -10,6 +10,11 @@ This module based on [i18n (internalization) module](https://github.com/zelenin/
 ## Installation
 
 
+### Install Yii2
+
+Install and configure [Yii2 App Advanced Template](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md)
+
+
 ### Composer
 
 The preferred way to install this extension is through [Composer](http://getcomposer.org/).
