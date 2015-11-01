@@ -14,7 +14,7 @@ class SourceMessageQuery extends ActiveQuery
     public function notTranslated()
     {
         $ids = $this->baseQuery()->indexBy('id')->all();
-        $this->andWhere(['not in', 'id', array_keys($ids)])
+        $this->andWhere(['not in', 'message.id', array_keys($ids)])
              ->andWhere(['not like', 'message', '@@']);
 
         return $this;
@@ -26,7 +26,7 @@ class SourceMessageQuery extends ActiveQuery
     public function translated()
     {
         $ids = $this->baseQuery()->indexBy('id')->all();
-        $this->andWhere(['in', 'id', array_keys($ids)])
+        $this->andWhere(['in', 'message.id', array_keys($ids)])
              ->andWhere(['not like', 'message', '@@']);
 
         return $this;
