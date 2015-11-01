@@ -13,9 +13,12 @@ class SourceMessageQuery extends ActiveQuery
      */
     public function notTranslated()
     {
+        $table = Message::tableName();
         $ids = $this->baseQuery()->indexBy('id')->all();
-        $this->andWhere(['not in', 'message.id', array_keys($ids)])
-             ->andWhere(['not like', 'message', '@@']);
+        $this
+            ->andWhere(['not in', $table . '.id', array_keys($ids)])
+            ->andWhere(['not like', 'message', '@@'])
+        ;
 
         return $this;
     }
@@ -25,9 +28,12 @@ class SourceMessageQuery extends ActiveQuery
      */
     public function translated()
     {
+        $table = Message::tableName();
         $ids = $this->baseQuery()->indexBy('id')->all();
-        $this->andWhere(['in', 'message.id', array_keys($ids)])
-             ->andWhere(['not like', 'message', '@@']);
+        $this
+            ->andWhere(['in', $table . '.id', array_keys($ids)])
+            ->andWhere(['not like', 'message', '@@'])
+        ;
 
         return $this;
     }
