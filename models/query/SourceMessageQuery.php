@@ -14,9 +14,25 @@ class SourceMessageQuery extends ActiveQuery
     public function notTranslated()
     {
         $table = Message::tableName();
-        $ids = $this->baseQuery()->indexBy('id')->all();
+        $query = Message::find()->select("{$table}.id");
+
+        $i = 0;
+        foreach (Yii::$app->getI18n()->languages as $language) {
+            if ($i === 0) {
+                $query->andWhere("{$table}.language = :language and {$table}.translation is not null", [
+                    ':language' => $language,
+                ]);
+            } else {
+                $query->innerJoin("{$table} t{$i}", "t{$i}.id = {$table}.id and t{$i}.language = :language and t{$i}.translation is not null", [
+                    ':language' => $language,
+                ]);
+            }
+            $i++;
+        }
+
+        $ids = $query->indexBy('id')->all();
         $this
-            ->andWhere(['not in', $table . '.id', array_keys($ids)])
+            ->andWhere(['not in', 'id', array_keys($ids)])
             ->andWhere(['not like', 'message', '@@'])
         ;
 
@@ -29,9 +45,23 @@ class SourceMessageQuery extends ActiveQuery
     public function translated()
     {
         $table = Message::tableName();
-        $ids = $this->baseQuery()->indexBy('id')->all();
+        $query = Message::find()->select("{$table}.id");
+        $i = 0;
+        foreach (Yii::$app->getI18n()->languages as $language) {
+            if ($i === 0) {
+                $query->andWhere("{$table}.language = :language and {$table}.translation is not null", [
+                    ':language' => $language,
+                ]);
+            } else {
+                $query->innerJoin("{$table} t{$i}", "t{$i}.id = {$table}.id and t{$i}.language = :language and t{$i}.translation is not null", [
+                    ':language' => $language,
+                ]);
+            }
+            $i++;
+        }
+        $ids = $query->indexBy('id')->all();
         $this
-            ->andWhere(['in', $table . '.id', array_keys($ids)])
+            ->andWhere(['in', 'id', array_keys($ids)])
             ->andWhere(['not like', 'message', '@@'])
         ;
 
@@ -46,25 +76,5 @@ class SourceMessageQuery extends ActiveQuery
         $this->andWhere(['like', 'message', '@@']);
 
         return $this;
-    }
-
-    /**
-     * @return \yii\db\Query
-     */
-    protected function baseQuery()
-    {
-        $table = Message::tableName();
-        $query = Message::find()->select($table . '.id');
-        $i = 0;
-        foreach (Yii::$app->getI18n()->languages as $language) {
-            if ($i === 0) {
-                $query->andWhere("{$table}.language = :language and {$table}.translation is not null and {$table}.translation != ''", [':language' => $language]);
-            } else {
-                $query->innerJoin("{$table} t{$i}", "t{$i}.id = {$table}.id and t{$i}.language = :language and t{$i}.translation is not null and t{$i}.translation != ''", [':language' => $language]);
-            }
-            $i++;
-        }
-
-        return $query;
     }
 }
