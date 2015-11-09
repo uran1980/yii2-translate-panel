@@ -30,7 +30,7 @@ class SourceMessageQuery extends ActiveQuery
             $i++;
         }
 
-        $ids = $query->indexBy("{$table}.id")->all();
+        $ids = $query->indexBy('id')->all();
         $this
             ->andWhere(['not in', "{$table}.id", array_keys($ids)])
             ->andWhere(['not like', 'message', '@@'])
@@ -59,7 +59,7 @@ class SourceMessageQuery extends ActiveQuery
             }
             $i++;
         }
-        $ids = $query->indexBy("{$table}.id")->all();
+        $ids = $query->indexBy('id')->all();
         $this
             ->andWhere(['in', "{$table}.id", array_keys($ids)])
             ->andWhere(['not like', 'message', '@@'])
