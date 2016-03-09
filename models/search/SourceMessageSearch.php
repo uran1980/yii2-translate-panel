@@ -187,12 +187,15 @@ class SourceMessageSearch extends SourceMessage
         }
 
         if ($this->status == static::STATUS_TRANSLATED) {
+            $query->joinWith(['messages']);
             $query->translated();
         }
         if ($this->status == static::STATUS_NOT_TRANSLATED) {
+            $query->joinWith(['messages']);
             $query->notTranslated();
         }
         if ( $this->status == static::STATUS_DELETED ) {
+            $query->joinWith(['messages']);
             $query->deleted();
         }
 
