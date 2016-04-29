@@ -88,10 +88,12 @@ return [
             'as access' => [
                 'class' => yii\filters\AccessControl::className(),
                 'rules' => [
-                    'controllers'   => ['i18n/default'],
-                    'actions'       => ['index', 'save', 'update', 'rescan', 'clear-cache', 'delete', 'restore'],
-                    'allow'         => true,
-                    'roles'         => ['translator'],
+                    [
+                        'controllers'   => ['i18n/default'],
+                        'actions'       => ['index', 'save', 'update', 'rescan', 'clear-cache', 'delete', 'restore'],
+                        'allow'         => true,
+                        'roles'         => ['translator'],
+                    ]
                 ],
             ],
         ],
