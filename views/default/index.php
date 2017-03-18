@@ -10,7 +10,6 @@ use uran1980\yii\modules\i18n\components\grid\ActionColumn;
 use uran1980\yii\modules\i18n\components\grid\DataColumn;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
 use uran1980\yii\modules\i18n\assets\AppTranslateAsset;
-use uran1980\yii\widgets\scrollToTop\ScrollToTop;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
@@ -245,4 +244,3 @@ AppTranslateAsset::register($this);
         ],
     ]); ?>
 </div>
-<?php echo ScrollToTop::widget();
