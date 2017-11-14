@@ -51,6 +51,11 @@ return [
         'i18n' => [
             'class'      => uran1980\yii\modules\i18n\components\I18N::className(),
             'languages'  => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
+            // Or, if you manage languages in database
+            //'languages'  => function() {
+            //    /* /!\ Make sure the result is a mere list of language codes */
+            //    return \namespace\of\your\LanguageClass::find()->select('code')->column();
+            //},
             'format'     => 'db',
             'sourcePath' => [
                 __DIR__ . '/../../frontend',
