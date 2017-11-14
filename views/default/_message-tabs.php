@@ -4,11 +4,8 @@ use yii\helpers\Html;
 use yii\bootstrap\Tabs;
 
 $items = [];
-if (is_callable(Yii::$app->i18n->languages)) {
-    $languages = call_user_func(Yii::$app->i18n->languages);
-} else {
-    $languages = Yii::$app->i18n->languages;
-}
+
+$languages = Yii::$app->i18n->languages;
 foreach ( $languages as $lang ) {
     $message = Yii::t($model->category, $model->message, [], $lang);
     $message = ($model->message == $message && $lang != $languages[0])
