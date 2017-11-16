@@ -5,6 +5,7 @@ namespace uran1980\yii\modules\i18n\controllers;
 use Yii;
 use yii\base\Model;
 use uran1980\yii\modules\i18n\Module;
+use uran1980\yii\modules\i18n\models\SourceMessage;
 use uran1980\yii\modules\i18n\models\search\SourceMessageSearch;
 use uran1980\yii\modules\i18n\helpers\AppHelper;
 use yii\helpers\Html;
@@ -183,5 +184,23 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         }
 
         return $response;
+    }
+
+    /**
+     * @param array|integer $id
+     * @return SourceMessage|SourceMessage[]
+     * @throws NotFoundHttpException
+     */
+    protected function findModel($id)
+    {
+        $query = SourceMessage::find()->where('id = :id', [':id' => $id]);
+        $models = is_array($id)
+        ? $query->all()
+        : $query->one();
+        if (!empty($models)) {
+            return $models;
+        } else {
+            throw new NotFoundHttpException(Module::t('The requested page does not exist'));
+        }
     }
 }
