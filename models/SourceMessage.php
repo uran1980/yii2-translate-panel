@@ -57,7 +57,7 @@ class SourceMessage extends ActiveRecord
         return [
             'id'            => Module::t('ID'),
             'category'      => Module::t('Category'),
-            'message'       => Module::t('Sourse Messages'),
+            'message'       => Module::t('Source Messages'),
             'translation'   => Module::t('Message Translations'),
             'status'        => Module::t('Translation status')
         ];
