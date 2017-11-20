@@ -57,7 +57,7 @@ class SourceMessage extends ActiveRecord
         return [
             'id'            => Module::t('ID'),
             'category'      => Module::t('Category'),
-            'message'       => Module::t('Sourse Messages'),
+            'message'       => Module::t('Source Messages'),
             'translation'   => Module::t('Message Translations'),
             'status'        => Module::t('Translation status')
         ];
@@ -92,7 +92,7 @@ class SourceMessage extends ActiveRecord
     public function initMessages()
     {
         $messages = [];
-        foreach (Yii::$app->getI18n()->languages as $language) {
+        foreach (Yii::$app->i18n->languages as $language) {
             if (!isset($this->messages[$language])) {
                 $message             = new Message;
                 $message->language   = $language;

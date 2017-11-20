@@ -116,4 +116,22 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
      */
     public $catalog = 'messages';
 
+    /**
+     * @throws InvalidConfigException
+     */
+    public function init()
+    {
+        if (!$this->languages) {
+            throw new InvalidConfigException('You should configure i18n component [language]');
+        }
+
+        if (is_callable($this->languages)) {
+            $this->languages = call_user_func($this->languages);
+        }
+        if (!is_array($this->languages)) {
+            throw new InvalidConfigException('i18n component [language] must be an array or a callable returning an array');
+        }
+
+        parent::init();
+    }
 }

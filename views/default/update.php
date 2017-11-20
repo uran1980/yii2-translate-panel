@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $form = ActiveForm::begin(); ?>
         <div class="row">
             <?php foreach ($model->messages as $language => $message) : ?>
-                <?php echo $form->field($model->messages[$language], '[' . $language . ']translation', ['options' => ['class' => 'form-group col-sm-6']])->textInput()->label($language); ?>
+                <?php echo $form->field($model->messages[$language], '[' . $language . ']translation', ['options' => ['class' => 'form-group col-sm-6']])->textInput()->label(strtoupper($language)); ?>
             <?php endforeach; ?>
         </div>
         <div class="form-group">
