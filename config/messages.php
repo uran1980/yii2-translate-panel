@@ -6,6 +6,12 @@ return [
     // array, required, list of language codes that the extracted messages
     // should be translated to. For example, ['zh-CN', 'de'].
     'languages' => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
+    // boolean, whether to force translation or not.
+    // Defaults to false. In that case, the source message will be displayed as in
+    // the code instead of what you could have set in database. When set to true,
+    // the version in database will be used instead of the code one, and you will
+    // be able to edit the messages for the sourceLanguage locale
+    'forceTranslation' => false,
     // string, the name of the function for translating messages.
     // Defaults to 'Yii::t'. This is used as a mark to find the messages to be
     // translated. You may use a string for single function name or an array for

@@ -2,6 +2,8 @@
 
 namespace uran1980\yii\modules\i18n\components;
 
+use \yii\i18n\DbMessageSource;
+
 class I18N extends \Zelenin\yii\modules\I18n\components\I18N
 {
     /**
@@ -21,6 +23,17 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
      * @var string
      */
     public $translator = 'Yii::t';
+
+    /**
+     * boolean, whether to force translation or not.
+     * Defaults to false.In that case, the source message will be displayed as in
+     * the code instead of what you could have set in database. When set to true,
+     * the version in database will be used instead of the code one, and you will
+     * be able to edit the messages for the sourceLanguage locale
+     *
+     * @var boolean
+     */
+    public $forceTranslation = false;
 
     /**
      * boolean, whether to sort messages by keys when merging new messages
@@ -130,6 +143,29 @@ class I18N extends \Zelenin\yii\modules\I18n\components\I18N
         }
         if (!is_array($this->languages)) {
             throw new InvalidConfigException('i18n component [language] must be an array or a callable returning an array');
+        }
+        if (!is_bool($this->forceTranslation)) {
+            throw new InvalidConfigException('i18n component [forceTranslation] must be a boolean');
+        }
+        if (!empty($this->sourceLanguage) && !is_string($this->sourceLanguage)) {
+            throw new InvalidConfigException('i18n component [sourceLanguage] must be a non-empty string');
+        }
+
+        $translationDefaultParams = [
+            'class' => DbMessageSource::className(),
+            'sourceMessageTable' => $this->sourceMessageTable,
+            'messageTable' => $this->messageTable,
+            'on missingTranslation' => $this->missingTranslationHandler
+        ];
+        if ($this->forceTranslation) {
+            $translationDefaultParams['forceTranslation'] = true;
+        }
+
+        if (!isset($this->translations['*'])) {
+            $this->translations['*'] = $translationDefaultParams;
+        }
+        if (!isset($this->translations['app']) && !isset($this->translations['app*'])) {
+            $this->translations['app'] = $translationDefaultParams;
         }
 
         parent::init();
