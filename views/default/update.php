@@ -24,9 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <?php $form = ActiveForm::begin(); ?>
         <div class="row">
-            <?php foreach ($model->messages as $language => $message) : ?>
-                <?php echo $form->field($model->messages[$language], '[' . $language . ']translation', ['options' => ['class' => 'form-group col-sm-6']])->textInput()->label(strtoupper($language)); ?>
-            <?php endforeach; ?>
+            <?php foreach ($model->messages as $language => $message):
+            $message->translation = ($model->message == $message && Yii::$app->sourceLanguage == $lang
+                ? $model->message : $message->translation);
+            echo $form->field($message, '[' . $language . ']translation', ['options' => ['class' => 'form-group col-sm-6']])
+                    ->textInput(
+                        (!Yii::$app->i18n->translations[$model->category]['forceTranslation'] && Yii::$app->sourceLanguage == $language)
+                            ? ['disabled' => 'disabled', 'title' => Module::t('Please set [forceTranslation] to true to be able to edit this field')]
+                            : []
+                    )->label(strtoupper($language));
+            endforeach; ?>
         </div>
         <div class="form-group">
             <?php echo
