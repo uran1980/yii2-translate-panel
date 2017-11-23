@@ -53,8 +53,9 @@ return [
             'languages'  => ['en', 'de', 'fr', 'it', 'es', 'pt', 'ru'],
             // Or, if you manage languages in database
             //'languages'  => function() {
-            //    /* /!\ Make sure the result is a mere list of language codes */
-            //    return \namespace\of\your\LanguageClass::find()->select('code')->column();
+            //    /* /!\ Make sure the result is a mere list of language codes, and the
+            //     * one used in views is the first one */
+            //    return \namespace\of\your\LanguageClass::find()->where(['active' => true'])->orderBy('default' => SORT_DESC])->select('code')->column();
             //},
             'format'     => 'db',
             'sourcePath' => [
@@ -63,11 +64,20 @@ return [
                 __DIR__ . '/../../common',
             ],
             'messagePath' => __DIR__  . '/../../messages',
+            // Whether database messages are to be used instead of view ones.
+            // Enables editing messages in locale specified by
+            // Yii::$app->sourceLanguage
+            // Can be set per translation category too
+            //'forceTranslation' => true,
             'translations' => [
                 '*' => [
                     'class'           => yii\i18n\DbMessageSource::className(),
                     'enableCaching'   => true,
                     'cachingDuration' => 60 * 60 * 2, // cache on 2 hours
+                    // Whether database messages are to be used instead of view
+                    // ones. Enables editing messages in view code locale.
+                    // Can be set globally too.
+                    //'forceTranslation' => true,
                 ],
             ],
         ],
