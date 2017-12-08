@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Tabs;
+use uran1980\yii\modules\i18n\Module;
 
 $items = [];
 
