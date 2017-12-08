@@ -128,7 +128,7 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         );
 
         // -------------------- DELETE TRANSLATION BY ID -----------------------
-        $model = $this->findModel($id);
+        $model = parent::findModel($id);
         $model->message = '@@' . $model->message . '@@';
         if ( $model->save() ) {
             // clear cache
@@ -166,7 +166,7 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         );
 
         // -------------------- RESTORE TRANSLATION BY ID ----------------------
-        $model = $this->findModel($id);
+        $model = parent::findModel($id);
         $model->message = trim($model->message, '@@');
         if ( $model->save() ) {
             // clear cache
