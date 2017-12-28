@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ? $model->message : $message->translation);
             echo $form->field($message, '[' . $language . ']translation', ['options' => ['class' => 'form-group col-sm-6']])
                     ->textInput(
-                        (!Yii::$app->i18n->translations[$model->category]['forceTranslation'] && Yii::$app->sourceLanguage == $language)
+                        (isset(Yii::$app->i18n->translations[$model->category]['forceTranslation']) && !Yii::$app->i18n->translations[$model->category]['forceTranslation'] && Yii::$app->sourceLanguage == $language)
                             ? ['disabled' => 'disabled', 'title' => Module::t('Please set [forceTranslation] to true to be able to edit this field')]
                             : []
                     )->label(strtoupper($language));

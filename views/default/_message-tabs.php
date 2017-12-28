@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Tabs;
+use uran1980\yii\modules\i18n\Module;
 
 $items = [];
 
@@ -17,7 +18,7 @@ foreach ( $languages as $lang ) {
         'dir'   => (in_array($lang, ['ar', 'fa']) ? 'rtl' : 'ltr'),
         'rows'  => 3,
     ];
-    if (!Yii::$app->i18n->translations[$model->category]->forceTranslation && Yii::$app->sourceLanguage == $lang) {
+    if (isset(Yii::$app->i18n->translations[$model->category]) && !Yii::$app->i18n->translations[$model->category]->forceTranslation && Yii::$app->sourceLanguage == $lang) {
         $parameters['disabled'] = 'disabled';
         $parameters['title']    = Module::t('Please set [forceTranslation] to true to be able to edit this field');
     }
