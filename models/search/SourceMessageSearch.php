@@ -500,9 +500,8 @@ class SourceMessageSearch extends SourceMessage
         foreach ( $new as $msgs ) {
             $counter['new'] += count($msgs);
         }
-        foreach ( $obsolete as $msgs ) {
-            $counter['obsolete'] += count($msgs);
-        }
+        
+        $counter['obsolete'] += count($obsolete);
 
         return $counter;
     }
