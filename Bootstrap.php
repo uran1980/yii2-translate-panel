@@ -19,7 +19,7 @@ class Bootstrap implements BootstrapInterface
             $app->getUrlManager()->addRules([
                 'translations/<id:\d+>'        => $moduleId . '/default/update',
                 'translations/page/<page:\d+>' => $moduleId . '/default/index',
-                'translations/<_a:(index|save|delete|restore|rescan|clear-cache)>'  => $moduleId . '/default/<_a>',
+                'translations/<_a:(index|save|delete|restore|rescan|clear-cache|clear-deleted)>'  => $moduleId . '/default/<_a>',
                 'translations' => $moduleId . '/default/index',
             ], false);
 

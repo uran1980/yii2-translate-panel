@@ -38,6 +38,18 @@ class DefaultController extends \Zelenin\yii\modules\I18n\controllers\DefaultCon
         }
     }
 
+    public function actionClearDeleted()
+    {
+        SourceMessage::deleteAll(['id' => SourceMessageSearch::getDeletedIds()]);
+
+        // ---------------------------- REDIRECT -------------------------------
+        if ( ($referrer = Yii::$app->getRequest()->referrer) ) {
+            return $this->redirect($referrer);
+        } else {
+        return $this->redirect(['/translations']);
+    }
+    }
+
     public function actionClearCache()
     {
         // ---------------------- CHECK IS AJAX REQUEST ------------------------

@@ -882,4 +882,13 @@ EOD;
     {
         return $this->color === null ? Console::streamSupportsAnsiColors($stream) : $this->color;
     }
+
+    /**
+     * Returns ids of messages marked as deleted
+     * @return array
+     */
+    public static function getDeletedIds()
+    {
+        return self::find()->select('id')->deleted()->column();
+    }
 }
