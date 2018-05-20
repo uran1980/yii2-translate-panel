@@ -62,6 +62,9 @@ AppTranslateAsset::register($this);
                href="<?php
                     echo Url::to(['/translations/clear-cache']); ?>"><i class="fa fa-recycle"></i> <?php
                     echo Module::t('Clear Cache'); ?></a>
+               <a class="btn btn-danger" href="<?php
+               echo Url::to(['/translations/clear-deleted']); ?>"><i class="fa fa-trash"></i> <?php
+                   echo Module::t('Clear deleted'); ?></a>
         </span>
     </h2>
     <?php

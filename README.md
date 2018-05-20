@@ -105,7 +105,7 @@ return [
                 'rules' => [
                     [
                         'controllers'   => ['i18n/default'],
-                        'actions'       => ['index', 'save', 'update', 'rescan', 'clear-cache', 'delete', 'restore'],
+                        'actions'       => ['index', 'save', 'update', 'rescan', 'clear-cache', 'delete', 'restore', 'clear-deleted'],
                         'allow'         => true,
                         'roles'         => ['translator'],
                     ]
